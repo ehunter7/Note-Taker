@@ -1,8 +1,21 @@
+require(`../../notes.html`);
+require(`../../index.html`);
+
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
+
+const fs = require(`fs`);
+
+const express = require(`express`);
+const app = express();
+
+const PORT = 8080;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -149,3 +162,13 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
+
+app.get(`/notes`, (req, res) => {});
+
+app.get(`/api/notes`, (req, res) => {
+  fs.readFile(`db.json`, `JSON`, data);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});
