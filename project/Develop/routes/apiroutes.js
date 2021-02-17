@@ -1,9 +1,14 @@
-const router = require("express").Router();
+const path = require(`path`);
+const fs = require(`fs`);
 
-const { Router } = require("express");
-
-router.get("/api/notes", (req, res) => {
-  fs.readFile("db.json", "JSON", data);
-});
-
-module.exports = router;
+// const { Router } = require("express");
+module.exports = (app) => {
+  app.get("/api/notes", (req, res) => {
+    const rawData = fs.readFileSync(
+      "C:projectsHomeworkNote-TakerprojectDevelopdbdb.json"
+    );
+    const data = JSON.parse(rawData);
+    console.log(data);
+    return data;
+  });
+};
