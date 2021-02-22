@@ -1,13 +1,8 @@
-require("../../notes.html");
-require("../../index.html");
-
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
-
-const fs = require("fs");
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -108,6 +103,7 @@ const handleRenderSaveBtn = function () {
 
 // Render's the list of note titles
 const renderNoteList = (notes) => {
+  console.log("we made it to the render");
   $noteList.empty();
 
   const noteListItems = [];
