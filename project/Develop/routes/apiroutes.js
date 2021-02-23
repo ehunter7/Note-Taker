@@ -4,7 +4,6 @@ const uuid = require("uuid");
 
 module.exports = (app) => {
   app.get("/api/notes", (req, res) => {
-    console.log("we made it this far");
     fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
       if (err) console.log(err);
       res.send(JSON.parse(data));
